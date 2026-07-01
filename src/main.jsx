@@ -43,6 +43,7 @@ const company = {
 
 const routerBase = import.meta.env.BASE_URL.replace(/\/$/, '');
 const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+const logoSrc = asset('/images/brand/electralux-logo.png');
 
 const serviceMeta = {
   installation: { icon: Bolt, image: asset('/images/optimized/renov-web.jpg') },
@@ -515,8 +516,319 @@ const content = {
   }
 };
 
+content.fr.nav.splice(4, 0, ['Aides Klima', '/aides-klima']);
+content.fr.klima = {
+  eyebrow: 'Aides Klima',
+  title: 'Aides pour vos travaux énergétiques',
+  subtitle: 'Klima-Agence aide les ménages au Luxembourg à estimer les soutiens disponibles pour l’isolation, les énergies renouvelables, le solaire, les pompes à chaleur et la mobilité électrique.',
+  introTitle: 'Un simulateur officiel pour préparer votre projet',
+  intro:
+    'Le portail aides.klima-agence.lu regroupe les aides étatiques, communales et des fournisseurs d’énergie. Les clients peuvent y lancer une simulation, vérifier les montants possibles et préparer leur demande avant les travaux.',
+  cards: [
+    ['Isolation du logement', 'Identifier les aides possibles pour améliorer l’enveloppe énergétique du bâtiment.'],
+    ['Chauffage renouvelable', 'Préparer un projet de pompe à chaleur ou de solution de chauffage plus durable.'],
+    ['Photovoltaïque', 'Estimer les soutiens pour produire de l’électricité propre avec le soleil.'],
+    ['Électromobilité', 'Vérifier les aides liées au choix de l’écomobilité et aux solutions de recharge.']
+  ],
+  supportTitle: 'Electralux vous accompagne',
+  support:
+    'Nous pouvons vous aider pour les parties électriques de votre projet : photovoltaïque, borne de recharge, alimentation, tableau électrique, conformité et raccordements nécessaires.',
+  cta: 'Accéder au formulaire d’aide Klima',
+  note: 'Le formulaire et la simulation officielle sont gérés par Klima-Agence.',
+  url: 'https://aides.klima-agence.lu/'
+};
+content.fr.thanks = {
+  eyebrow: 'Message envoyé',
+  title: 'Merci pour votre demande',
+  subtitle: 'Votre message a bien été transmis à Electralux. Nous revenons vers vous rapidement.',
+  home: 'Retour à l’accueil',
+  contact: 'Nouvelle demande'
+};
+
+content.de.nav.splice(4, 0, ['Klima-Beihilfen', '/aides-klima']);
+content.de.klima = {
+  eyebrow: 'Klima-Beihilfen',
+  title: 'Beihilfen für Ihre energetischen Arbeiten',
+  subtitle: 'Klima-Agence unterstützt Haushalte in Luxemburg dabei, verfügbare Förderungen für Dämmung, erneuerbare Energien, Solarenergie, Wärmepumpen und Elektromobilität zu prüfen.',
+  introTitle: 'Ein offizieller Simulator zur Vorbereitung Ihres Projekts',
+  intro:
+    'Das Portal aides.klima-agence.lu bündelt staatliche, kommunale und energieversorgerbezogene Beihilfen. Kunden können dort eine Simulation starten, mögliche Beträge prüfen und ihren Antrag vor den Arbeiten vorbereiten.',
+  cards: [
+    ['Dämmung der Wohnung', 'Mögliche Beihilfen zur Verbesserung der Energieeffizienz des Gebäudes ermitteln.'],
+    ['Erneuerbares Heizen', 'Ein Projekt mit Wärmepumpe oder nachhaltiger Heizlösung vorbereiten.'],
+    ['Photovoltaik', 'Förderungen für die Produktion von sauberem Strom durch Sonne einschätzen.'],
+    ['Elektromobilität', 'Beihilfen für Elektromobilität und Ladelösungen prüfen.']
+  ],
+  supportTitle: 'Electralux begleitet Sie',
+  support:
+    'Wir unterstützen Sie bei den elektrischen Teilen Ihres Projekts: Photovoltaik, Ladestation, Stromversorgung, Schaltschrank, Konformität und notwendige Anschlüsse.',
+  cta: 'Zum Klima-Beihilfeformular',
+  note: 'Das offizielle Formular und die Simulation werden von Klima-Agence verwaltet.',
+  url: 'https://aides.klima-agence.lu/'
+};
+content.de.thanks = {
+  eyebrow: 'Nachricht gesendet',
+  title: 'Vielen Dank für Ihre Anfrage',
+  subtitle: 'Ihre Nachricht wurde an Electralux übermittelt. Wir melden uns schnellstmöglich bei Ihnen.',
+  home: 'Zur Startseite',
+  contact: 'Neue Anfrage'
+};
+
+content.en = {
+  langLabel: 'EN',
+  nav: [
+    ['Home', '/'],
+    ['Services', '/services'],
+    ['About', '/about'],
+    ['Projects', '/projects'],
+    ['Klima Aid', '/aides-klima'],
+    ['Contact', '/contact']
+  ],
+  hours: ['Monday - Friday: 8:00 AM - 6:00 PM', 'Saturday: 9:00 AM - 12:00 PM', 'Sunday: Closed'],
+  footerDescription: 'Professional electrical solutions for homes and businesses in Luxembourg.',
+  quickLinks: 'Quick Links',
+  ourServices: 'Our Services',
+  rights: '© 2026 Electralux. All rights reserved',
+  privacy: 'Privacy Policy',
+  terms: 'Terms of Use',
+  learnMore: 'Learn more',
+  contactUs: 'Contact us',
+  quote: 'Request a quote',
+  allProjects: 'All projects',
+  noProjects: 'No project matches your search.',
+  hero: {
+    eyebrow: 'Electrical installation expert',
+    title: 'Your trusted electrician in Luxembourg',
+    subtitle: 'Professional electrical solutions for homes and businesses.',
+    metrics: [
+      ['10+', 'years of experience'],
+      ['7/7', 'fast troubleshooting'],
+      ['LU', 'Luxembourg standards']
+    ]
+  },
+  sections: {
+    servicesTitle: 'Our Services',
+    servicesSubtitle: 'Complete electrical solutions for all your needs',
+    aboutTitle: 'About Electralux',
+    aboutSubtitle: 'Your trusted electrical partner in Luxembourg for more than 5 years',
+    projectsTitle: 'Our Recent Projects',
+    projectsSubtitle: 'Discover some of our latest work',
+    testimonialsTitle: 'What our clients say',
+    testimonialsSubtitle: 'Client satisfaction is our priority',
+    ctaTitle: 'Ready to start your project?',
+    ctaSubtitle: 'Contact us today for a free quote'
+  },
+  services: [
+    {
+      id: 'installation',
+      title: 'Electrical Installation',
+      description: 'Complete installations for new buildings and renovations according to Luxembourg standards',
+      features: [
+        'Complete installation for houses and apartments',
+        'Compliance upgrades for existing systems',
+        'Electrical panels and distribution',
+        'Indoor and outdoor lighting',
+        'Sockets and switches'
+      ]
+    },
+    {
+      id: 'maintenance',
+      title: 'Maintenance & Troubleshooting',
+      description: 'Fast and reliable service for all electrical problems, available 7 days a week',
+      features: [
+        'Emergency troubleshooting 7 days a week',
+        'Fault detection and repair',
+        'Preventive maintenance',
+        'Compliance checks',
+        'Replacement of defective components'
+      ]
+    },
+    {
+      id: 'automation',
+      title: 'Smart Home',
+      description: 'Intelligent solutions to make your home or office more comfortable and efficient',
+      features: [
+        'Smart lighting control',
+        'Connected thermostats and heating',
+        'Security and alarm systems',
+        'Automated shutters and blinds',
+        'Multiroom audio/video integration'
+      ]
+    },
+    {
+      id: 'renewable',
+      title: 'Renewable Energy',
+      description: 'Installation of solar panels and renewable energy systems',
+      features: [
+        'Photovoltaic panel installation',
+        'Energy storage systems',
+        'Electric vehicle charging stations',
+        'Heat pumps',
+        'Energy audits and optimization advice'
+      ]
+    }
+  ],
+  values: [
+    ['Quality', 'We provide high-quality electrical installations that meet the strictest safety standards.', CheckCircle2],
+    ['Reliability', 'Our team respects deadlines and delivers dependable service clients can count on.', ShieldCheck],
+    ['Innovation', 'We use modern technologies to offer efficient, future-ready electrical solutions.', Zap],
+    ['Sustainability', 'We promote sustainable energy solutions that protect the environment while reducing costs.', Sparkles]
+  ],
+  projects: [
+    {
+      id: 1,
+      categoryKey: 'residential',
+      title: 'Residential Electrical Renovation',
+      description: 'Complete kitchen renovation in Capellen, including compliance upgrades, relocation and connection of sockets and lighting, plus dedicated circuits for household appliances.'
+    },
+    {
+      id: 2,
+      categoryKey: 'automation',
+      title: 'Smart Home Installation',
+      description: 'Full home automation system in a modern villa in Strassen, controlling lighting, heating, shutters and security from a smartphone.'
+    },
+    {
+      id: 3,
+      categoryKey: 'commercial',
+      title: 'Commercial Electrical System',
+      description: 'Complete electrical installation for the QUBE - Groupe store in Foetz: cable trays, electrical panel, indoor and outdoor lighting, VDI network cabling and professional equipment connections.'
+    },
+    {
+      id: 4,
+      categoryKey: 'renewable',
+      title: 'Solar Panel Installation',
+      description: 'Solar panel installation on a family house in Dudelange, helping significantly reduce energy consumption.'
+    },
+    {
+      id: 5,
+      categoryKey: 'residential',
+      title: 'Residential Electrical Renovation',
+      description: 'Complete renovation of a home electrical system in Luxembourg City, including compliance upgrades, electrical panel replacement and new lighting points.'
+    },
+    {
+      id: 6,
+      categoryKey: 'renewable',
+      title: 'Electric Vehicle Charging Stations',
+      description: 'Installation of EV charging stations in a residential building in Luxembourg City, allowing residents to charge their vehicles easily.'
+    },
+    {
+      id: 7,
+      categoryKey: 'commercial',
+      title: "New Electrical Installation - Parking Cloche d'Or",
+      description: "Complete electrical installation for the Cloche d'Or car park in collaboration with Paul Wagner et Fils: main supply, secondary circuits, LED lighting, access control, fire detection and electrical panel."
+    }
+  ],
+  categories: {
+    all: 'All projects',
+    residential: 'Residential',
+    commercial: 'Commercial',
+    automation: 'Smart Home',
+    renewable: 'Renewable Energy'
+  },
+  testimonials: [
+    {
+      name: 'Jean D.',
+      position: 'Homeowner',
+      image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600',
+      text: 'The Electralux team did outstanding work on the complete electrical renovation of our home. Professional, punctual and full of excellent advice. I highly recommend them!'
+    },
+    {
+      name: 'Marie L.',
+      position: 'Restaurant manager',
+      image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600',
+      text: 'We hired Electralux for the electrical installation of our new restaurant. Their expertise and responsiveness were essential to meet our opening deadline.'
+    },
+    {
+      name: 'Thomas S.',
+      position: 'Architect',
+      image: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=600',
+      text: 'I have worked with Electralux on several projects for years. Their knowledge of standards and ability to propose innovative solutions make them a trusted partner.'
+    }
+  ],
+  about: {
+    eyebrow: 'About',
+    history: 'Our Story',
+    title: 'A local, precise and committed company',
+    paragraphs: [
+      'Founded in 2020 by Madjbour Salah, a passionate electrician with more than 15 years of experience, Electralux was created with a simple vision: provide high-quality electrical services to residents and businesses in Luxembourg.',
+      'What began as a small company with only two electricians has grown over the years into one of the respected electrical service providers in Luxembourg, now employing a team of 10 qualified professionals.',
+      'Our steady growth is the result of our unwavering commitment to quality, safety and client satisfaction.'
+    ],
+    preview:
+      'Founded in 2020, Electralux has become one of the reliable electrical service providers in Luxembourg. Our qualified electricians deliver high-quality solutions tailored to each client’s needs.',
+    valuesTitle: 'Our Values',
+    valuesSubtitle: 'The principles that guide every intervention',
+    teamTitle: 'Our Team',
+    teamSubtitle: 'Qualified professionals close to your needs',
+    team: [
+      ['Sarah M', 'Customer Service', 'Sarah is the friendly face of Electralux, providing exceptional customer service and making sure every client receives personal attention.'],
+      ['Salah Madjbour', 'Founder & Director', 'With more than 15 years of experience in electricity, Salah founded Electralux in 2020 with a clear vision: to become the reference electrical partner in Luxembourg.']
+    ]
+  },
+  contact: {
+    title: 'Contact us',
+    subtitle: 'Our team is ready to answer all your questions',
+    formTitle: 'Request a quote',
+    labels: ['Name', 'Email', 'Phone', 'Subject', 'Message'],
+    submit: 'Send',
+    success: 'Thank you. Your request is ready; you can also contact us directly by phone or email.',
+    address: 'Address',
+    phone: 'Phone',
+    hours: 'Opening hours',
+    mapTitle: 'Electralux map'
+  },
+  projectsSearch: 'Search for a project...',
+  klima: {
+    eyebrow: 'Klima Aid',
+    title: 'Aid for your energy renovation work',
+    subtitle: 'Klima-Agence helps households in Luxembourg estimate available support for insulation, renewable energy, solar power, heat pumps and electric mobility.',
+    introTitle: 'An official simulator to prepare your project',
+    intro:
+      'The aides.klima-agence.lu portal brings together state, municipal and energy supplier aid. Clients can start a simulation, check possible amounts and prepare their request before the work begins.',
+    cards: [
+      ['Home insulation', 'Identify possible aid for improving the energy performance of the building envelope.'],
+      ['Renewable heating', 'Prepare a heat pump project or a more sustainable heating solution.'],
+      ['Photovoltaics', 'Estimate support for producing clean electricity from the sun.'],
+      ['Electric mobility', 'Check aid linked to electric mobility and charging solutions.']
+    ],
+    supportTitle: 'Electralux supports you',
+    support:
+      'We can help with the electrical parts of your project: photovoltaics, charging station, power supply, electrical panel, compliance and required connections.',
+    cta: 'Open the Klima aid form',
+    note: 'The official form and simulation are managed by Klima-Agence.',
+    url: 'https://aides.klima-agence.lu/'
+  },
+  thanks: {
+    eyebrow: 'Message sent',
+    title: 'Thank you for your request',
+    subtitle: 'Your message has been sent to Electralux. We will get back to you quickly.',
+    home: 'Back to home',
+    contact: 'New request'
+  },
+  legal: {
+    privacyEyebrow: 'Privacy',
+    termsEyebrow: 'Terms',
+    privacyTitle: 'Privacy Policy',
+    termsTitle: 'Terms of Use',
+    privacySubtitle: 'Transparency on how your information is handled.',
+    termsSubtitle: 'The rules that apply to using the Electralux website.',
+    privacySections: [
+      ['Information collection', 'Information sent through the contact form is used only to answer your quote or information request.'],
+      ['Use', 'Electralux uses your contact details to get in touch about your electrical projects, interventions, troubleshooting, photovoltaic installations or charging stations.'],
+      ['Protection', 'We do not sell your personal data. Information is kept only for the time needed to process your request.'],
+      ['Contact', 'For any question, contact us at']
+    ],
+    termsSections: [
+      ['Website use', 'This website presents the services, projects and contact details of Electralux in Luxembourg. The information is provided for informational purposes.'],
+      ['Quotes and interventions', 'Requests sent through the website do not constitute automatic acceptance of a service. Each project is reviewed and receives a tailored quote.'],
+      ['Ownership', 'Texts, photographs, visuals and brand elements on the Electralux website are protected and may not be reused without permission.'],
+      ['Contact', 'For any question about the terms of use, contact']
+    ]
+  }
+};
+
 function dataFor(lang) {
-  const c = content[lang];
+  const c = content[lang] || content.fr;
   return {
     c,
     services: c.services.map((service) => ({ ...service, ...serviceMeta[service.id] })),
@@ -558,7 +870,9 @@ function Header({ c, lang, setLang }) {
   return (
     <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="container nav-shell">
-        <Link className="brand" to="/" onClick={() => setOpen(false)}>Electralux</Link>
+        <Link className="brand logo-brand" to="/" onClick={() => setOpen(false)} aria-label="Electralux">
+          <img src={logoSrc} alt="Electralux" />
+        </Link>
         <nav className="desktop-nav">
           {c.nav.map(([label, to]) => (
             <NavLink key={to} to={to} className={({ isActive }) => (isActive ? 'active' : '')}>
@@ -570,6 +884,7 @@ function Header({ c, lang, setLang }) {
           <select className="language-select" value={lang} onChange={(event) => setLang(event.target.value)} aria-label="Language">
             <option value="fr">FR</option>
             <option value="de">DE</option>
+            <option value="en">EN</option>
           </select>
           <a className="phone-link" href={company.phoneLink}><Phone size={17} />{company.phoneDisplay}</a>
           <button className="icon-button mobile-menu" type="button" onClick={() => setOpen(!open)} aria-label="Menu">
@@ -596,7 +911,9 @@ function Footer({ c, services }) {
     <footer className="footer">
       <div className="container footer-grid">
         <div>
-          <Link className="brand footer-brand" to="/">Electralux</Link>
+          <Link className="footer-logo-frame" to="/" aria-label="Electralux">
+            <img src={logoSrc} alt="Electralux" />
+          </Link>
           <p>{c.footerDescription}</p>
         </div>
         <div>
@@ -901,7 +1218,7 @@ function ProjectCard({ project, delay = 0 }) {
 }
 
 function ContactPage({ c }) {
-  const [sent, setSent] = useState(false);
+  const redirectUrl = `${window.location.origin}${routerBase}/merci`;
   return (
     <>
       <PageHero eyebrow={c.nav.find((item) => item[1] === '/contact')[0]} title={c.contact.title} subtitle={c.contact.subtitle} icon={Mail} />
@@ -909,14 +1226,17 @@ function ContactPage({ c }) {
         <div className="container contact-grid">
           <Reveal className="contact-card">
             <h2>{c.contact.formTitle}</h2>
-            <form onSubmit={(event) => { event.preventDefault(); setSent(true); }}>
+            <form action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="8fd6a9a6-fbed-48e3-912f-e8ff7ca9d982" />
+              <input type="hidden" name="from_name" value="Electralux Website" />
+              <input type="hidden" name="redirect" value={redirectUrl} />
+              <input type="checkbox" name="botcheck" className="hidden" tabIndex="-1" autoComplete="off" />
               <label>{c.contact.labels[0]}<input required name="name" /></label>
               <label>{c.contact.labels[1]}<input required type="email" name="email" /></label>
               <label>{c.contact.labels[2]}<input name="phone" /></label>
               <label>{c.contact.labels[3]}<input required name="subject" /></label>
               <label>{c.contact.labels[4]}<textarea required name="message" rows="5" /></label>
               <button className="btn primary" type="submit">{c.contact.submit} <ArrowRight size={18} /></button>
-              {sent && <p className="success">{c.contact.success}</p>}
             </form>
           </Reveal>
           <Reveal className="info-panel" delay={0.08}>
@@ -938,6 +1258,65 @@ function InfoRow({ icon: Icon, title, children }) {
       <span><Icon size={20} /></span>
       <div><h3>{title}</h3><p>{children}</p></div>
     </div>
+  );
+}
+
+function KlimaAidPage({ c }) {
+  return (
+    <>
+      <PageHero eyebrow={c.klima.eyebrow} title={c.klima.title} subtitle={c.klima.subtitle} icon={Sun} />
+      <section className="section">
+        <div className="container klima-layout">
+          <Reveal className="info-panel klima-main">
+            <span className="eyebrow"><Search size={16} />{c.klima.eyebrow}</span>
+            <h2>{c.klima.introTitle}</h2>
+            <p className="lead">{c.klima.intro}</p>
+            <div className="button-row">
+              <a className="btn primary" href={c.klima.url} target="_blank" rel="noreferrer">
+                {c.klima.cta} <ArrowRight size={18} />
+              </a>
+              <Link className="btn outline" to="/contact">{c.quote}</Link>
+            </div>
+            <p className="small-note">{c.klima.note}</p>
+          </Reveal>
+          <Reveal className="service-card klima-support" delay={0.08}>
+            <span className="service-icon"><Bolt size={26} /></span>
+            <h3>{c.klima.supportTitle}</h3>
+            <p>{c.klima.support}</p>
+          </Reveal>
+        </div>
+      </section>
+      <section className="section soft">
+        <div className="container">
+          <div className="service-grid klima-cards">
+            {c.klima.cards.map(([title, text], index) => (
+              <Reveal className="service-card" key={title} delay={index * 0.03}>
+                <span className="service-icon"><CheckCircle2 size={24} /></span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+      <Cta c={c} />
+    </>
+  );
+}
+
+function ThanksPage({ c }) {
+  return (
+    <>
+      <PageHero eyebrow={c.thanks.eyebrow} title={c.thanks.title} subtitle={c.thanks.subtitle} icon={CheckCircle2} />
+      <section className="section">
+        <div className="container narrow center thanks-panel">
+          <div className="button-row center">
+            <Link className="btn primary" to="/">{c.thanks.home}</Link>
+            <Link className="btn outline" to="/contact">{c.thanks.contact}</Link>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
 
@@ -982,9 +1361,11 @@ function App() {
   useEffect(() => {
     localStorage.setItem('electralux-lang', lang);
     document.documentElement.lang = lang;
-    document.title = lang === 'fr'
-      ? 'Electralux - Expert en Installations Électriques au Luxembourg'
-      : 'Electralux - Experte für Elektroinstallationen in Luxemburg';
+    document.title = {
+      fr: 'Electralux - Expert en Installations Électriques au Luxembourg',
+      de: 'Electralux - Experte für Elektroinstallationen in Luxemburg',
+      en: 'Electralux - Electrical Installation Expert in Luxembourg'
+    }[lang] || 'Electralux';
   }, [lang]);
 
   return (
@@ -997,7 +1378,9 @@ function App() {
           <Route path="/services" element={<ServicesPage c={c} services={services} />} />
           <Route path="/about" element={<AboutPage c={c} />} />
           <Route path="/projects" element={<ProjectsPage c={c} projects={projects} />} />
+          <Route path="/aides-klima" element={<KlimaAidPage c={c} />} />
           <Route path="/contact" element={<ContactPage c={c} />} />
+          <Route path="/merci" element={<ThanksPage c={c} />} />
           <Route path="/privacy" element={<LegalPage c={c} type="privacy" />} />
           <Route path="/terms" element={<LegalPage c={c} type="terms" />} />
         </Routes>
