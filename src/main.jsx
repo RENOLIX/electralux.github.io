@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Link, NavLink, Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import {
@@ -44,6 +44,7 @@ const company = {
 const routerBase = import.meta.env.BASE_URL.replace(/\/$/, '');
 const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
 const logoSrc = asset('/images/brand/electralux-logo.png');
+const klimaHeroImage = asset('/images/klima/klima-aides-hero.png');
 
 const serviceMeta = {
   installation: { icon: Bolt, image: asset('/images/optimized/renov-web.jpg') },
@@ -853,8 +854,32 @@ function ScrollToTop() {
 }
 
 function Reveal({ children, className = '', delay = 0 }) {
-  const style = delay ? { animationDelay: `${delay}s` } : undefined;
-  return <div className={`reveal ${className}`.trim()} style={style}>{children}</div>;
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return undefined;
+    if (!('IntersectionObserver' in window)) {
+      setVisible(true);
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setVisible(true);
+        observer.unobserve(entry.target);
+      },
+      { rootMargin: '0px 0px -8% 0px', threshold: 0.14 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  const style = delay ? { '--reveal-delay': `${delay}s` } : undefined;
+  return <div ref={ref} className={`reveal ${visible ? 'is-visible' : ''} ${className}`.trim()} style={style}>{children}</div>;
 }
 
 function Header({ c, lang, setLang }) {
@@ -934,15 +959,17 @@ function Footer({ c, services }) {
       </div>
       <div className="container footer-bottom">
         <span>{c.rights}</span>
-        <span><Link to="/privacy">{c.privacy}</Link><Link to="/terms">{c.terms}</Link></span>
+        <span className="footer-legal"><Link to="/privacy">{c.privacy}</Link><Link to="/terms">{c.terms}</Link></span>
+        <span className="footer-credit">Developed by <strong>SITEMAGIQUE</strong></span>
       </div>
     </footer>
   );
 }
 
-function PageHero({ eyebrow, title, subtitle, icon: Icon = Zap }) {
+function PageHero({ eyebrow, title, subtitle, icon: Icon = Zap, backgroundImage }) {
+  const style = backgroundImage ? { '--page-hero-image': `url("${backgroundImage}")` } : undefined;
   return (
-    <section className="page-hero">
+    <section className={`page-hero ${backgroundImage ? 'has-image' : ''}`} style={style}>
       <div className="container page-hero-inner">
         <Reveal>
           <span className="eyebrow"><Icon size={16} />{eyebrow}</span>
@@ -1264,7 +1291,7 @@ function InfoRow({ icon: Icon, title, children }) {
 function KlimaAidPage({ c }) {
   return (
     <>
-      <PageHero eyebrow={c.klima.eyebrow} title={c.klima.title} subtitle={c.klima.subtitle} icon={Sun} />
+      <PageHero eyebrow={c.klima.eyebrow} title={c.klima.title} subtitle={c.klima.subtitle} icon={Sun} backgroundImage={klimaHeroImage} />
       <section className="section">
         <div className="container klima-layout">
           <Reveal className="info-panel klima-main">
