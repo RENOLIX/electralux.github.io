@@ -47,13 +47,14 @@ p { color: var(--muted); line-height: 1.75; margin: 0; }
 }
 .site-header.is-scrolled { background: rgba(255, 255, 255, 0.95); box-shadow: 0 14px 40px rgba(7, 17, 31, 0.08); }
 .nav-shell { height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.brand { display: inline-flex; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.25rem; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.35rem; }
 .brand-mark { width: 42px; height: 42px; display: inline-grid; place-items: center; border-radius: 8px; background: linear-gradient(145deg, var(--ink), #102846); color: var(--gold); box-shadow: 0 12px 32px rgba(11, 99, 206, 0.24); }
 .desktop-nav { display: flex; gap: 4px; align-items: center; }
 .desktop-nav a { padding: 10px 14px; border-radius: 8px; font-weight: 700; color: var(--ink-soft); }
 .desktop-nav a.active, .desktop-nav a:hover { color: var(--blue); background: #edf5ff; }
 .nav-actions { display: flex; align-items: center; gap: 10px; }
-.lang-chip, .phone-link { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); padding: 9px 12px; border-radius: 8px; font-weight: 700; background: #fff; }
+.lang-chip, .phone-link, .language-select { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); padding: 9px 12px; border-radius: 8px; font-weight: 700; background: #fff; }
+.language-select { min-height: 40px; color: var(--ink); cursor: pointer; outline: none; }
 .phone-link { color: var(--blue); }
 .icon-button { border: 0; width: 42px; height: 42px; border-radius: 8px; background: var(--ink); color: #fff; display: inline-grid; place-items: center; }
 .mobile-menu { display: none; }
@@ -158,14 +159,37 @@ p { color: var(--muted); line-height: 1.75; margin: 0; }
 .mini-values span { display: flex; align-items: center; gap: 8px; color: var(--ink-soft); font-weight: 800; }
 
 .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.project-card { position: relative; overflow: hidden; border-radius: 8px; min-height: 430px; background: var(--ink); box-shadow: var(--shadow); }
-.project-card img { width: 100%; height: 100%; min-height: 430px; object-fit: cover; transition: transform 0.6s ease; }
+.project-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  height: clamp(410px, 36vw, 470px);
+  background: var(--ink);
+  box-shadow: var(--shadow);
+  isolation: isolate;
+}
+.project-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
 .project-card:hover img { transform: scale(1.06); }
 .project-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(7,17,31,0.9)); }
 .project-card div { position: absolute; z-index: 1; left: 22px; right: 22px; bottom: 22px; }
 .project-card span { color: var(--gold); font-weight: 800; font-size: 0.88rem; }
 .project-card h3 { color: #fff; font-size: 1.35rem; margin: 8px 0; }
-.project-card p { color: rgba(255,255,255,0.82); font-size: 0.93rem; }
+.project-card p {
+  color: rgba(255,255,255,0.82);
+  display: -webkit-box;
+  font-size: 0.93rem;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
 
 .testimonial-grid, .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .person { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
@@ -230,7 +254,7 @@ input:focus, textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 4px r
 .footer-bottom span:last-child { display: flex; gap: 18px; }
 
 @media (max-width: 980px) {
-  .desktop-nav, .phone-link, .lang-chip { display: none; }
+  .desktop-nav, .phone-link { display: none; }
   .mobile-menu { display: inline-grid; }
   .mobile-panel { display: grid; gap: 4px; padding: 8px 20px 20px; background: #fff; border-bottom: 1px solid var(--line); }
   .mobile-panel a { padding: 13px 6px; font-weight: 800; color: var(--ink-soft); display: flex; align-items: center; gap: 8px; }
@@ -249,7 +273,7 @@ input:focus, textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 4px r
   .hero p { font-size: 1.06rem; }
   .section { padding: 70px 0; }
   .service-grid, .project-grid, .testimonial-grid, .team-grid, .footer-grid { grid-template-columns: 1fr; }
-  .project-card, .project-card img { min-height: 380px; }
+  .project-card { height: 410px; }
   .service-row img { height: 300px; }
   .floating-badge { right: 10px; bottom: 10px; }
   .mini-values { grid-template-columns: 1fr; }
