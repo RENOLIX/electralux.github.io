@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Electralux - Votre expert en installations électriques au Luxembourg. Services d'électricité professionnels pour particuliers et entreprises." />
+    <meta name="keywords" content="électricien, Luxembourg, installation électrique, dépannage électrique, électricité, Electralux,photovoltaique,installation panneaux solaires Luxembourg, installateur photovoltaïque Luxembourg, entreprise panneau solaire Luxembourg, énergie solaire Luxembourg, autoconsommation solaire Luxembourg, installateur panneaux photovoltaïques agréé Luxembourg, panneaux solaires pour maison individuelle Luxembourg, subvention panneau solaire Luxembourg, aide installation solaire Luxembourg, rentabilité photovoltaïque 2025 Luxembourg, énergie renouvelable au Luxembourg,
+
+électricien professionnel Luxembourg, installation électrique maison neuve Luxembourg, mise en conformité électrique Luxembourg, rénovation électrique Luxembourg, dépannage électrique Luxembourg, entreprise électricité générale Luxembourg,
+
+installation borne de recharge Luxembourg, borne électrique pour voiture Luxembourg, recharge à domicile voiture électrique Luxembourg, installateur IRVE Luxembourg, borne de recharge Tesla Luxembourg, borne de recharge Renault Luxembourg, borne de recharge Peugeot Luxembourg, borne de recharge intelligente,
+
+électricien à Luxembourg-Ville, installateur solaire à Dudelange, borne de recharge Esch-sur-Alzette, électricien Esch-sur-Alzette, installateur photovoltaïque Differdange, entreprise solaire Ettelbruck, panneaux solaires Diekirch,
+
+installateur panneau solaire Luxembourg, IRVE agréé Luxembourg, entreprise éco-responsable énergie verte Luxembourg" />
+    <meta name="geo.region" content="LU" />
+    <meta name="geo.placename" content="Luxembourg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Electralux - Expert en Installations Électriques au Luxembourg</title>
+    <script type="module" crossorigin src="/assets/index-BGXe1y62.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B-KlITXi.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
