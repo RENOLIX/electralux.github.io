@@ -34,6 +34,11 @@ p { color: var(--muted); line-height: 1.75; margin: 0; }
 .narrow { width: min(820px, calc(100% - 40px)); }
 .center { text-align: center; justify-content: center; }
 .mt { margin-top: 36px; }
+.reveal { animation: reveal-up 0.55s ease both; }
+@keyframes reveal-up {
+  from { opacity: 0.01; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 .site-header {
   position: fixed;
@@ -198,7 +203,7 @@ p { color: var(--muted); line-height: 1.75; margin: 0; }
 .stars { color: var(--gold); display: flex; gap: 2px; margin-bottom: 14px; }
 
 .cta-band { background: linear-gradient(135deg, var(--blue-dark), var(--blue)); color: #fff; padding: 88px 0; position: relative; overflow: hidden; }
-.cta-band::before { content: ''; position: absolute; inset: 0; background-image: url('../images/projects/borne_de_recharge_rr.jpg'); background-size: cover; background-position: center; opacity: 0.15; }
+.cta-band::before { content: ''; position: absolute; inset: 0; background-image: url('../images/optimized/borne_de_recharge_rr-web.jpg'); background-size: cover; background-position: center; opacity: 0.15; }
 .cta-inner { position: relative; text-align: center; }
 .cta-inner h2 { font-size: clamp(2rem, 4vw, 3.4rem); margin-bottom: 16px; }
 .cta-inner p { color: rgba(255,255,255,0.85); margin-bottom: 28px; font-size: 1.15rem; }

@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Link, NavLink, Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
-import { motion, useReducedMotion } from 'framer-motion';
 import {
   ArrowRight,
   Bolt,
@@ -46,23 +45,23 @@ const routerBase = import.meta.env.BASE_URL.replace(/\/$/, '');
 const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
 
 const serviceMeta = {
-  installation: { icon: Bolt, image: asset('/images/services/renov.jpeg') },
-  maintenance: { icon: Wrench, image: asset('/images/services/maint.jpeg') },
-  automation: { icon: Smartphone, image: asset('/images/projects/domotik.jpeg') },
+  installation: { icon: Bolt, image: asset('/images/optimized/renov-web.jpg') },
+  maintenance: { icon: Wrench, image: asset('/images/optimized/maint-web.jpg') },
+  automation: { icon: Smartphone, image: asset('/images/optimized/domotik-web.jpg') },
   renewable: {
     icon: Sun,
-    image: 'https://images.pexels.com/photos/9875441/pexels-photo-9875441.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+    image: asset('/images/optimized/solar-web.jpg')
   }
 };
 
 const projectImages = [
-  asset('/images/projects/pexels-max-rahubovskiy-6489127 copy.jpg'),
-  asset('/images/projects/pexels-max-rahubovskiy-7534545.jpg'),
-  asset('/images/projects/20220716_163120.jpg'),
-  'https://images.pexels.com/photos/9875441/pexels-photo-9875441.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-  asset('/images/projects/appart_algrange_copy.jpg'),
-  asset('/images/projects/borne_de_recharge_rr.jpg'),
-  asset('/images/projects/bn2-1.jpg')
+  asset('/images/optimized/pexels-max-rahubovskiy-6489127-copy-web.jpg'),
+  asset('/images/optimized/pexels-max-rahubovskiy-7534545-web.jpg'),
+  asset('/images/optimized/20220716_163120-web.jpg'),
+  asset('/images/optimized/solar-web.jpg'),
+  asset('/images/optimized/appart_algrange_copy-web.jpg'),
+  asset('/images/optimized/borne_de_recharge_rr-web.jpg'),
+  asset('/images/optimized/bn2-1-web.jpg')
 ];
 
 const content = {
@@ -542,18 +541,8 @@ function ScrollToTop() {
 }
 
 function Reveal({ children, className = '', delay = 0 }) {
-  const reduce = useReducedMotion();
-  return (
-    <motion.div
-      className={className}
-      initial={reduce ? false : { opacity: 0, y: 28 }}
-      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
-    >
-      {children}
-    </motion.div>
-  );
+  const style = delay ? { animationDelay: `${delay}s` } : undefined;
+  return <div className={`reveal ${className}`.trim()} style={style}>{children}</div>;
 }
 
 function Header({ c, lang, setLang }) {
@@ -766,7 +755,7 @@ function Testimonials({ c }) {
         <div className="testimonial-grid">
           {c.testimonials.map((item, index) => (
             <Reveal className="testimonial" key={item.name} delay={index * 0.06}>
-              <div className="person"><img src={item.image} alt={item.name} /><span><strong>{item.name}</strong><small>{item.position}</small></span></div>
+              <div className="person"><img src={item.image} alt={item.name} loading="lazy" decoding="async" /><span><strong>{item.name}</strong><small>{item.position}</small></span></div>
               <div className="stars">{Array.from({ length: 5 }).map((_, i) => <Star key={i} size={16} fill="currentColor" />)}</div>
               <p>"{item.text}"</p>
             </Reveal>
@@ -787,7 +776,7 @@ function ServicesPage({ c, services }) {
             const Icon = service.icon;
             return (
               <Reveal className={`service-row ${index % 2 ? 'reverse' : ''}`} key={service.id} delay={0.05}>
-                <img src={service.image} alt={service.title} id={service.id} />
+                <img src={service.image} alt={service.title} id={service.id} loading="lazy" decoding="async" />
                 <div>
                   <span className="service-icon"><Icon size={28} /></span>
                   <h2>{service.title}</h2>
@@ -813,7 +802,7 @@ function AboutPage({ c }) {
       <PageHero eyebrow={c.about.eyebrow} title={c.sections.aboutTitle} subtitle={c.sections.aboutSubtitle} icon={Building2} />
       <section className="section">
         <div className="container split">
-          <Reveal><img className="rounded-image" src={asset('/images/services/renov.jpeg')} alt="Electralux" /></Reveal>
+          <Reveal><img className="rounded-image" src={asset('/images/optimized/renov-web.jpg')} alt="Electralux" loading="lazy" decoding="async" /></Reveal>
           <Reveal>
             <span className="eyebrow"><HomeIcon size={16} />{c.about.history}</span>
             <h2>{c.about.title}</h2>
@@ -840,13 +829,13 @@ function AboutPage({ c }) {
           <SectionIntro title={c.about.teamTitle} subtitle={c.about.teamSubtitle} />
           <div className="team-grid">
             <Reveal className="team-card">
-              <img src={asset('/images/team/elec_repond_tel.jpeg')} alt={c.about.team[0][0]} />
+              <img src={asset('/images/optimized/elec_repond_tel-web.jpg')} alt={c.about.team[0][0]} loading="lazy" decoding="async" />
               <h3>{c.about.team[0][0]}</h3>
               <span>{c.about.team[0][1]}</span>
               <p>{c.about.team[0][2]}</p>
             </Reveal>
             <Reveal className="team-card" delay={0.07}>
-              <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600" alt={c.about.team[1][0]} />
+              <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600" alt={c.about.team[1][0]} loading="lazy" decoding="async" />
               <h3>{c.about.team[1][0]}</h3>
               <span>{c.about.team[1][1]}</span>
               <p>{c.about.team[1][2]}</p>
@@ -901,7 +890,7 @@ function ProjectsPage({ c, projects }) {
 function ProjectCard({ project, delay = 0 }) {
   return (
     <Reveal className="project-card" delay={delay}>
-      <img src={project.image} alt={project.title} />
+      <img src={project.image} alt={project.title} loading="lazy" decoding="async" />
       <div>
         <span>{project.category}</span>
         <h3>{project.title}</h3>
