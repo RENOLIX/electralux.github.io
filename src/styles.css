@@ -20,7 +20,7 @@ html { scroll-behavior: smooth; }
 body { margin: 0; background: #fff; }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
-button, input, textarea { font: inherit; }
+button, input, textarea, select { font: inherit; }
 
 h1, h2, h3 {
   font-family: 'Montserrat', system-ui, sans-serif;
@@ -249,8 +249,8 @@ p { color: var(--muted); line-height: 1.75; margin: 0; }
 form { display: grid; gap: 14px; margin-top: 22px; }
 .hidden { display: none !important; }
 label { display: grid; gap: 7px; color: var(--ink-soft); font-weight: 800; }
-input, textarea { border: 1px solid var(--line); border-radius: 8px; padding: 13px 14px; outline: 0; transition: border 0.2s ease, box-shadow 0.2s ease; }
-input:focus, textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(11,99,206,0.12); }
+input, textarea, .contact-card select { border: 1px solid var(--line); border-radius: 8px; padding: 13px 14px; outline: 0; transition: border 0.2s ease, box-shadow 0.2s ease; background: #fff; color: var(--ink); }
+input:focus, textarea:focus, .contact-card select:focus { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(11,99,206,0.12); }
 .success { color: var(--success); font-weight: 800; }
 .info-panel { display: grid; gap: 18px; }
 .info-row { display: grid; grid-template-columns: 44px 1fr; gap: 14px; }

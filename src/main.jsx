@@ -262,6 +262,8 @@ const content = {
       subtitle: 'Notre équipe est prête à répondre à toutes vos questions',
       formTitle: 'Demander un devis',
       labels: ['Nom', 'Email', 'Téléphone', 'Sujet', 'Message'],
+      serviceLabel: 'Service demandé',
+      servicePlaceholder: 'Choisissez un service',
       submit: 'Envoyer',
       success: 'Merci. Votre demande est prête, vous pouvez aussi nous contacter directement par téléphone ou email.',
       address: 'Adresse',
@@ -486,6 +488,8 @@ const content = {
       subtitle: 'Unser Team beantwortet gerne all Ihre Fragen',
       formTitle: 'Angebot anfordern',
       labels: ['Name', 'E-Mail', 'Telefon', 'Betreff', 'Nachricht'],
+      serviceLabel: 'Gewünschte Dienstleistung',
+      servicePlaceholder: 'Dienstleistung auswählen',
       submit: 'Senden',
       success: 'Danke. Ihre Anfrage ist bereit, Sie können uns auch direkt telefonisch oder per E-Mail kontaktieren.',
       address: 'Adresse',
@@ -771,6 +775,8 @@ content.en = {
     subtitle: 'Our team is ready to answer all your questions',
     formTitle: 'Request a quote',
     labels: ['Name', 'Email', 'Phone', 'Subject', 'Message'],
+    serviceLabel: 'Requested service',
+    servicePlaceholder: 'Choose a service',
     submit: 'Send',
     success: 'Thank you. Your request is ready; you can also contact us directly by phone or email.',
     address: 'Address',
@@ -1261,6 +1267,13 @@ function ContactPage({ c }) {
               <label>{c.contact.labels[0]}<input required name="name" /></label>
               <label>{c.contact.labels[1]}<input required type="email" name="email" /></label>
               <label>{c.contact.labels[2]}<input name="phone" /></label>
+              <label>
+                {c.contact.serviceLabel}
+                <select required name="service" defaultValue="">
+                  <option value="" disabled>{c.contact.servicePlaceholder}</option>
+                  {c.services.map((service) => <option key={service.id} value={service.title}>{service.title}</option>)}
+                </select>
+              </label>
               <label>{c.contact.labels[3]}<input required name="subject" /></label>
               <label>{c.contact.labels[4]}<textarea required name="message" rows="5" /></label>
               <button className="btn primary" type="submit">{c.contact.submit} <ArrowRight size={18} /></button>
