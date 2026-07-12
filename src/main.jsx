@@ -521,6 +521,60 @@ const content = {
   }
 };
 
+const solarLanding = {
+  fr: {
+    eyebrow: 'Photovoltaïque au Luxembourg',
+    title: 'Installation de panneaux solaires photovoltaïques',
+    subtitle: "Une solution complète, de l'étude au raccordement, avec accompagnement pour les aides et le préfinancement photovoltaïque.",
+    introTitle: 'Votre projet photovoltaïque avec Electralux',
+    intro: "Electralux accompagne les particuliers et les entreprises au Luxembourg pour dimensionner, installer et raccorder leurs panneaux photovoltaïques. Notre équipe étudie votre toiture, vos besoins et votre consommation afin de proposer une installation fiable, performante et conforme.",
+    cards: [
+      ['Étude et dimensionnement', 'Analyse de la toiture, de la consommation et du potentiel solaire pour une solution adaptée.'],
+      ['Installation photovoltaïque', 'Pose des panneaux, onduleur, protections électriques, câblage et raccordement dans les règles de l’art.'],
+      ['Aides et préfinancement', 'Accompagnement dans les démarches liées aux aides Klima-Agence et au préfinancement photovoltaïque disponible.'],
+      ['Suivi et maintenance', 'Contrôle de fonctionnement, entretien et assistance pour préserver les performances de votre installation.']
+    ],
+    whyTitle: 'Une entreprise agréée pour votre installation',
+    why: "Confiez votre projet à un interlocuteur local qui maîtrise l’électricité, le photovoltaïque, les tableaux électriques, les batteries et les bornes de recharge. Vous recevez un devis clair et une installation pensée pour durer.",
+    quote: 'Demander une étude photovoltaïque',
+    aid: 'Voir les aides Klima'
+  },
+  de: {
+    eyebrow: 'Photovoltaik in Luxemburg',
+    title: 'Installation von Photovoltaik-Solaranlagen',
+    subtitle: 'Komplettlösung von der Planung bis zum Anschluss, einschließlich Beratung zu Förderungen und Photovoltaik-Vorfinanzierung.',
+    introTitle: 'Ihr Photovoltaikprojekt mit Electralux',
+    intro: 'Electralux begleitet Privatpersonen und Unternehmen in Luxemburg bei Planung, Installation und Anschluss ihrer Photovoltaikanlage. Wir analysieren Dach, Bedarf und Verbrauch für eine zuverlässige, leistungsstarke und normgerechte Lösung.',
+    cards: [
+      ['Analyse und Planung', 'Bewertung von Dach, Verbrauch und Solarpotenzial für eine passende Lösung.'],
+      ['Photovoltaik-Installation', 'Montage von Modulen, Wechselrichter, Schutztechnik, Verkabelung und Anschluss.'],
+      ['Förderung und Vorfinanzierung', 'Unterstützung bei Klima-Agence-Förderungen und verfügbarer Photovoltaik-Vorfinanzierung.'],
+      ['Kontrolle und Wartung', 'Funktionskontrolle, Wartung und Unterstützung für dauerhaft gute Leistung.']
+    ],
+    whyTitle: 'Ein zugelassenes Unternehmen für Ihre Anlage',
+    why: 'Vertrauen Sie Ihr Projekt einem lokalen Ansprechpartner für Elektrotechnik, Photovoltaik, Stromverteilung, Batteriespeicher und Ladestationen an. Sie erhalten ein klares Angebot und eine langlebige Installation.',
+    quote: 'Photovoltaik-Studie anfragen',
+    aid: 'Klima-Förderungen ansehen'
+  },
+  en: {
+    eyebrow: 'Solar power in Luxembourg',
+    title: 'Photovoltaic solar panel installation',
+    subtitle: 'A complete solution from design to grid connection, including support with grants and photovoltaic pre-financing.',
+    introTitle: 'Your photovoltaic project with Electralux',
+    intro: 'Electralux helps homeowners and businesses in Luxembourg design, install and connect photovoltaic panels. We assess your roof, needs and consumption to deliver a reliable, efficient and compliant system.',
+    cards: [
+      ['Survey and design', 'Assessment of the roof, consumption and solar potential for a tailored solution.'],
+      ['Photovoltaic installation', 'Installation of panels, inverter, electrical protection, wiring and grid connection.'],
+      ['Grants and pre-financing', 'Support with Klima-Agence grants and available photovoltaic pre-financing.'],
+      ['Monitoring and maintenance', 'System checks, maintenance and support to protect long-term performance.']
+    ],
+    whyTitle: 'An approved company for your installation',
+    why: 'Entrust your project to a local specialist in electrical work, photovoltaics, distribution boards, batteries and EV charging. You receive a clear quote and a system designed to last.',
+    quote: 'Request a photovoltaic study',
+    aid: 'View Klima grants'
+  }
+};
+
 content.fr.nav.splice(4, 0, ['Aides Klima', '/aides-klima']);
 content.fr.klima = {
   eyebrow: 'Aides Klima',
@@ -1116,7 +1170,7 @@ function Testimonials({ c }) {
   );
 }
 
-function ServicesPage({ c, services }) {
+function ServicesPage({ c, services, lang }) {
   return (
     <>
       <PageHero eyebrow={c.sections.servicesTitle} title={c.sections.servicesTitle} subtitle={c.sections.servicesSubtitle} icon={SlidersHorizontal} />
@@ -1134,7 +1188,14 @@ function ServicesPage({ c, services }) {
                   <ul className="check-list">
                     {service.features.map((feature) => <li key={feature}><CheckCircle2 size={18} />{feature}</li>)}
                   </ul>
-                  <Link className="btn primary" to="/contact">{c.contactUs} <ArrowRight size={18} /></Link>
+                  <div className="button-row">
+                    <Link className="btn primary" to="/contact">{c.contactUs} <ArrowRight size={18} /></Link>
+                    {service.id === 'renewable' && (
+                      <Link className="btn outline" to="/installation-photovoltaique">
+                        {(solarLanding[lang] || solarLanding.fr).quote}
+                      </Link>
+                    )}
+                  </div>
                 </div>
               </Reveal>
             );
@@ -1247,6 +1308,48 @@ function ProjectCard({ project, delay = 0 }) {
         <p>{project.description}</p>
       </div>
     </Reveal>
+  );
+}
+
+function SolarPage({ c, lang }) {
+  const solar = solarLanding[lang] || solarLanding.fr;
+  return (
+    <>
+      <PageHero eyebrow={solar.eyebrow} title={solar.title} subtitle={solar.subtitle} icon={Sun} backgroundImage={asset('/images/optimized/solar-web.jpg')} />
+      <section className="section">
+        <div className="container klima-layout">
+          <Reveal className="info-panel klima-main">
+            <span className="eyebrow"><Sun size={16} />{solar.eyebrow}</span>
+            <h2>{solar.introTitle}</h2>
+            <p className="lead">{solar.intro}</p>
+            <div className="button-row">
+              <Link className="btn primary" to="/contact">{solar.quote} <ArrowRight size={18} /></Link>
+              <Link className="btn outline" to="/aides-klima">{solar.aid}</Link>
+            </div>
+          </Reveal>
+          <Reveal className="info-panel klima-support" delay={0.08}>
+            <span className="service-icon"><ShieldCheck size={28} /></span>
+            <h2>{solar.whyTitle}</h2>
+            <p>{solar.why}</p>
+            <a href={company.phoneLink} className="btn secondary"><Phone size={18} />{company.phoneDisplay}</a>
+          </Reveal>
+        </div>
+      </section>
+      <section className="section soft">
+        <div className="container">
+          <div className="service-grid klima-cards">
+            {solar.cards.map(([title, text], index) => (
+              <Reveal className="service-card" key={title} delay={index * 0.04}>
+                <span className="service-icon"><CheckCircle2 size={24} /></span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+      <Cta c={c} />
+    </>
   );
 }
 
@@ -1394,6 +1497,116 @@ function SectionIntro({ title, subtitle }) {
   );
 }
 
+const seoPages = {
+  fr: {
+    '/': ['Panneaux solaires et électricité au Luxembourg | Electralux', "Entreprise agréée au Luxembourg pour panneaux photovoltaïques, installation électrique, préfinancement solaire, domotique et bornes de recharge."],
+    '/services': ['Services électriques et photovoltaïques au Luxembourg | Electralux', "Découvrez nos services: installations électriques, dépannage, domotique, panneaux solaires photovoltaïques et bornes de recharge au Luxembourg."],
+    '/installation-photovoltaique': ['Installation photovoltaïque au Luxembourg | Electralux', "Installation de panneaux solaires photovoltaïques au Luxembourg par une entreprise agréée. Étude, raccordement, aides et préfinancement photovoltaïque."],
+    '/about': ['Entreprise d’électricité agréée au Luxembourg | Electralux', "Découvrez Electralux, votre entreprise locale pour les installations électriques et photovoltaïques à Esch-sur-Alzette et partout au Luxembourg."],
+    '/projects': ['Projets électriques et photovoltaïques | Electralux Luxembourg', "Découvrez les réalisations Electralux: panneaux photovoltaïques, installations électriques, rénovation, domotique et bornes de recharge."],
+    '/aides-klima': ['Aides Klima pour photovoltaïque au Luxembourg | Electralux', "Informez-vous sur les aides Klima-Agence, les subventions et le préfinancement pour votre installation photovoltaïque au Luxembourg."],
+    '/contact': ['Devis panneaux solaires et électricité | Electralux Luxembourg', "Demandez votre devis gratuit pour des panneaux solaires photovoltaïques, une installation électrique ou une borne de recharge au Luxembourg."],
+    '/privacy': ['Politique de confidentialité | Electralux', 'Consultez la politique de confidentialité du site Electralux Luxembourg.'],
+    '/terms': ["Conditions d’utilisation | Electralux", "Consultez les conditions d’utilisation du site Electralux Luxembourg."],
+    '/merci': ['Merci pour votre demande | Electralux', 'Votre demande a bien été envoyée à Electralux.']
+  },
+  de: {
+    '/': ['Photovoltaik und Elektrotechnik in Luxemburg | Electralux', 'Zugelassenes Unternehmen in Luxemburg für Photovoltaikanlagen, Elektroinstallationen, Vorfinanzierung, Hausautomation und Ladestationen.'],
+    '/services': ['Elektro- und Photovoltaikleistungen in Luxemburg | Electralux', 'Elektroinstallation, Wartung, Hausautomation, Photovoltaikmodule und Ladestationen in ganz Luxemburg.'],
+    '/installation-photovoltaique': ['Photovoltaikanlage in Luxemburg | Electralux', 'Photovoltaikmodule vom zugelassenen Fachbetrieb: Planung, Installation, Anschluss, Förderungen und Vorfinanzierung in Luxemburg.'],
+    '/about': ['Zugelassener Elektrofachbetrieb in Luxemburg | Electralux', 'Lernen Sie Electralux kennen, Ihren lokalen Partner für Elektro- und Photovoltaikanlagen in Luxemburg.'],
+    '/projects': ['Elektro- und Photovoltaikprojekte | Electralux', 'Referenzen für Photovoltaik, Elektroinstallationen, Renovierung, Hausautomation und Ladestationen in Luxemburg.'],
+    '/aides-klima': ['Klima-Förderungen für Photovoltaik | Electralux', 'Informationen zu Klima-Agence-Förderungen und Vorfinanzierung für Photovoltaikanlagen in Luxemburg.'],
+    '/contact': ['Angebot für Photovoltaik und Elektroarbeiten | Electralux', 'Fordern Sie ein kostenloses Angebot für Photovoltaik, Elektroinstallation oder Ladestation in Luxemburg an.']
+  },
+  en: {
+    '/': ['Solar panels and electrical services in Luxembourg | Electralux', 'Approved Luxembourg company for photovoltaic panels, electrical installations, solar pre-financing, automation and EV charging.'],
+    '/services': ['Electrical and photovoltaic services in Luxembourg | Electralux', 'Electrical installation, maintenance, automation, photovoltaic solar panels and EV charging throughout Luxembourg.'],
+    '/installation-photovoltaique': ['Photovoltaic installation in Luxembourg | Electralux', 'Solar panel installation by an approved company: design, connection, grants and photovoltaic pre-financing in Luxembourg.'],
+    '/about': ['Approved electrical company in Luxembourg | Electralux', 'Meet Electralux, your local partner for electrical and photovoltaic installations in Luxembourg.'],
+    '/projects': ['Electrical and photovoltaic projects | Electralux', 'Explore our solar, electrical, renovation, home automation and EV charging projects in Luxembourg.'],
+    '/aides-klima': ['Klima grants for solar panels in Luxembourg | Electralux', 'Learn about Klima-Agence grants and pre-financing for photovoltaic installations in Luxembourg.'],
+    '/contact': ['Solar panel and electrical quote | Electralux Luxembourg', 'Request a free quote for solar panels, electrical installation or EV charging in Luxembourg.']
+  }
+};
+
+function Seo({ lang }) {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const fallback = seoPages.fr[pathname] || seoPages.fr['/'];
+    const [title, description] = seoPages[lang]?.[pathname] || fallback;
+    const canonicalUrl = `https://electralux.lu${pathname === '/' ? '/' : pathname}`;
+    const setMeta = (selector, attribute, value) => {
+      const element = document.head.querySelector(selector);
+      if (element) element.setAttribute(attribute, value);
+    };
+
+    document.title = title;
+    setMeta('meta[name="description"]', 'content', description);
+    setMeta('meta[name="robots"]', 'content', pathname === '/merci' ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+    setMeta('link[rel="canonical"]', 'href', canonicalUrl);
+    setMeta('meta[property="og:title"]', 'content', title);
+    setMeta('meta[property="og:description"]', 'content', description);
+    setMeta('meta[property="og:url"]', 'content', canonicalUrl);
+    setMeta('meta[property="og:locale"]', 'content', lang === 'de' ? 'de_LU' : lang === 'en' ? 'en_GB' : 'fr_LU');
+    setMeta('meta[name="twitter:title"]', 'content', title);
+    setMeta('meta[name="twitter:description"]', 'content', description);
+
+    const schema = {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': ['LocalBusiness', 'Electrician'],
+          '@id': 'https://electralux.lu/#business',
+          name: 'Electralux',
+          url: 'https://electralux.lu/',
+          logo: 'https://electralux.lu/images/brand/electralux-logo.png',
+          image: 'https://electralux.lu/images/og-image.jpg',
+          telephone: '+352 691 645 625',
+          email: company.email,
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: company.address.street,
+            postalCode: company.address.postalCode.replace('L-', ''),
+            addressLocality: company.address.city,
+            addressCountry: 'LU'
+          },
+          areaServed: { '@type': 'Country', name: 'Luxembourg' },
+          priceRange: '€€',
+          knowsAbout: ['Panneaux solaires', 'Panneaux photovoltaïques', 'Installation photovoltaïque', 'Préfinancement photovoltaïque', 'Installation électrique', 'Bornes de recharge']
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://electralux.lu/#website',
+          url: 'https://electralux.lu/',
+          name: 'Electralux',
+          inLanguage: lang
+        },
+        ...(pathname === '/installation-photovoltaique' ? [{
+          '@type': 'Service',
+          name: title,
+          description,
+          serviceType: 'Installation de panneaux solaires photovoltaïques',
+          provider: { '@id': 'https://electralux.lu/#business' },
+          areaServed: { '@type': 'Country', name: 'Luxembourg' },
+          url: canonicalUrl
+        }] : [])
+      ]
+    };
+    let script = document.getElementById('electralux-structured-data');
+    if (!script) {
+      script = document.createElement('script');
+      script.id = 'electralux-structured-data';
+      script.type = 'application/ld+json';
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(schema);
+  }, [lang, pathname]);
+
+  return null;
+}
+
 function App() {
   const [lang, setLang] = useState(() => localStorage.getItem('electralux-lang') || 'fr');
   const { c, services, projects } = useMemo(() => dataFor(lang), [lang]);
@@ -1401,21 +1614,18 @@ function App() {
   useEffect(() => {
     localStorage.setItem('electralux-lang', lang);
     document.documentElement.lang = lang;
-    document.title = {
-      fr: 'Electralux - Expert en Installations Électriques au Luxembourg',
-      de: 'Electralux - Experte für Elektroinstallationen in Luxemburg',
-      en: 'Electralux - Electrical Installation Expert in Luxembourg'
-    }[lang] || 'Electralux';
   }, [lang]);
 
   return (
     <Router basename={routerBase}>
       <ScrollToTop />
+      <Seo lang={lang} />
       <Header c={c} lang={lang} setLang={setLang} />
       <main>
         <Routes>
           <Route path="/" element={<Home c={c} services={services} projects={projects} />} />
-          <Route path="/services" element={<ServicesPage c={c} services={services} />} />
+          <Route path="/services" element={<ServicesPage c={c} services={services} lang={lang} />} />
+          <Route path="/installation-photovoltaique" element={<SolarPage c={c} lang={lang} />} />
           <Route path="/about" element={<AboutPage c={c} />} />
           <Route path="/projects" element={<ProjectsPage c={c} projects={projects} />} />
           <Route path="/aides-klima" element={<KlimaAidPage c={c} />} />
